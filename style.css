@@ -3,45 +3,69 @@ body {
   margin: 20px;
   background: #f9f9f9;
 }
+
 h1 {
   font-size: 1.8em;
 }
+
 pre {
   background-color: #eee;
   padding: 10px;
   overflow-x: auto;
 }
-table, th, td {
+
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
 }
-th, td {
+
+table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+th,
+td {
   padding: 8px;
 }
+
 .tabs {
   display: flex;
   margin-top: 20px;
 }
+
 .tab {
   padding: 10px 20px;
   cursor: pointer;
   background-color: #ddd;
   margin-right: 2px;
 }
+
+.tab:hover {
+  background-color: #ccc;
+}
+
 .tab.active {
   background-color: #bbb;
   font-weight: bold;
 }
+
 .tab-content {
   display: none;
   margin-top: 10px;
 }
+
 .tab-content.active {
   display: block;
 }
+
 #copy-btn {
   margin-top: 10px;
 }
+
 #paste-input {
   width: 100%;
   height: 150px;
