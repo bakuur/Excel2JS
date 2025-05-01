@@ -9,10 +9,21 @@
 <body>
   <h1>Excel to JSON Converter</h1>
   <input type="file" id="upload" accept=".xlsx, .xls"/>
+  <textarea id="paste-input" placeholder="Paste your table data here (tab-delimited or CSV)"></textarea>
+  <button id="parse-paste">Convert Pasted Data</button>
   <button id="clear">Clear</button>
-  <div id="table-container"></div>
-  <h2>JSON Output</h2>
-  <pre id="json-output"></pre>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="table">Table View</div>
+    <div class="tab" data-tab="json">JSON View</div>
+  </div>
+
+  <div id="table-container" class="tab-content active"></div>
+
+  <div id="json-view" class="tab-content">
+    <button id="copy-btn">Copy JSON</button>
+    <pre id="json-output"></pre>
+  </div>
 
   <script src="libs/xlsx.full.min.js"></script>
   <script src="script.js"></script>
