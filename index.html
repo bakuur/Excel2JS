@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Excel to JSON (Offline)</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <h1>Excel to JSON Converter</h1>
-  <input type="file" id="upload" accept=".xlsx, .xls, .csv"/>
-  <textarea id="paste-input" placeholder="Paste your table data here (tab-delimited or CSV)"></textarea>
-  <button id="parse-paste">Convert Pasted Data</button>
-  <button id="clear">Clear</button>
-
+  <div>
+    <input type="file" id="upload" accept=".xlsx, .xls, .csv" />
+  </div>
+  <div>
+    <textarea id="paste-input" placeholder="Paste your table data here (tab-delimited or CSV)"></textarea>
+    <label for="delimiter">Delimiter:</label>
+    <select id="delimiter">
+      <option value="auto">Auto Detect</option>
+      <option value=",">Comma (,)</option>
+      <option value="\t">Tab (↹)</option>
+    </select>
+    <button id="parse-paste">Convert Pasted Data</button>
+    <button id="clear">Clear</button>
+  </div>
   <div class="tabs">
     <div class="tab active" data-tab="table">Table View</div>
     <div class="tab" data-tab="json">JSON View</div>
   </div>
 
-  <div id="table-container" class="tab-content active"></div>
+  <div id="table-view" class="tab-content active">
+    <div id="table-container"></div>
+  </div>
 
   <div id="json-view" class="tab-content">
     <button id="copy-btn">Copy JSON</button>
@@ -28,4 +41,5 @@
   <script src="libs/xlsx.full.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

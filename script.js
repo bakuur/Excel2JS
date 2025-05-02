@@ -7,10 +7,34 @@ document.getElementById("clear").addEventListener("click", () => {
 
 document.querySelectorAll(".tab").forEach(tab => {
   tab.addEventListener("click", () => {
+    const tabName = tab.dataset.tab;
+
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
     document.querySelectorAll(".tab-content").forEach(tc => tc.classList.remove("active"));
+
     tab.classList.add("active");
-    document.getElementById(tab.dataset.tab + "-view").classList.add("active");
+    
+    const tabContent = document.getElementById(tabName + "-view");
+    if (tabContent) {
+      tabContent.classList.add("active");
+
+      // Restore table content if switching back to table view
+      if (tabName === "table" && document.getElementById("table-container").innerHTML.trim() === "") {
+        if (window.lastTableData) {
+          displayTable(window.lastTableData);
+        }
+      }
+    } else {
+      console.warn(`No content found for tab '${tabName}'`);
+    }
+    
+
+    // Restore table if it was hidden
+    if (tabName === "table" && document.getElementById("table-container").innerHTML.trim() === "") {
+      if (window.lastTableData) {
+        displayTable(window.lastTableData);
+      }
+    }
   });
 });
 
@@ -25,7 +49,11 @@ document.getElementById("parse-paste").addEventListener("click", () => {
   const text = document.getElementById("paste-input").value.trim();
   if (!text) return;
 
-  const rows = text.split(/\r?\n/).map(row => row.split(/\t|,/));
+  let delimiterChoice = document.getElementById("delimiter").value;
+  let delimiter = delimiterChoice === "auto"
+    ? (text.includes("\t") ? "\t" : ",")
+    : delimiterChoice;
+  const rows = text.split(/\r?\n/).map(row => row.split(delimiter));
   displayTable(rows);
   const headers = rows[0];
   const dataJson = rows.slice(1).map(row => {
@@ -40,7 +68,7 @@ function handleFile(e) {
   const file = e.target.files[0];
   const reader = new FileReader();
 
-  reader.onload = function(event) {
+  reader.onload = function (event) {
     const data = new Uint8Array(event.target.result);
     const workbook = XLSX.read(data, { type: "array" });
     const sheetName = workbook.SheetNames[0];
@@ -63,15 +91,31 @@ function handleFile(e) {
 function displayTable(data) {
   const tableContainer = document.getElementById("table-container");
   const table = document.createElement("table");
-  data.forEach(row => {
-    const tr = document.createElement("tr");
-    row.forEach(cell => {
-      const td = document.createElement("td");
-      td.textContent = cell;
-      tr.appendChild(td);
+
+  if (data.length > 0) {
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    data[0].forEach(header => {
+      const th = document.createElement("th");
+      th.textContent = header;
+      headerRow.appendChild(th);
     });
-    table.appendChild(tr);
-  });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+    data.slice(1).forEach(row => {
+      const tr = document.createElement("tr");
+      row.forEach(cell => {
+        const td = document.createElement("td");
+        td.textContent = cell;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+  }
+
   tableContainer.innerHTML = "";
   tableContainer.appendChild(table);
 }

@@ -14,6 +14,95 @@ pre {
   overflow-x: auto;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  background-color: #112240;
+  color: #ccd6f6;
+  padding: 12px;
+  border: 1px solid #233554;
+  text-align: left;
+}
+
+th {
+  background-color: #1e2a47;
+  color: #64ffda;
+}
+
+tr:hover {
+  background-color: #1b2b40;
+}
+
+th,
+td {
+  padding: 8px;
+}
+
+.tabs {
+  display: flex;
+  margin-top: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #ddd;
+  margin-right: 2px;
+}
+
+.tab:hover {
+  background-color: #ccc;
+}
+
+
+.tab.active {
+  background-color: #0a192f;
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-bottom: none;
+  z-index: 2;
+}
+
+
+.tab-content {
+  display: none;
+  margin-top: 10px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+#copy-btn {
+  margin-top: 10px;
+}
+
+#paste-input {
+  width: 100%;
+  height: 150px;
+  font-family: monospace;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f9f9f9;
+}
+
+h1 {
+  font-size: 1.8em;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  overflow-x: auto;
+}
+
 table,
 th,
 td {
@@ -48,10 +137,15 @@ td {
   background-color: #ccc;
 }
 
+
 .tab.active {
-  background-color: #bbb;
-  font-weight: bold;
+  background-color: #0a192f;
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-bottom: none;
+  z-index: 2;
 }
+
 
 .tab-content {
   display: none;
@@ -70,4 +164,218 @@ td {
   width: 100%;
   height: 150px;
   font-family: monospace;
+}
+
+body {
+  background-color: #0a192f;
+  color: #ccd6f6;
+}
+
+h1 {
+  color: #64ffda;
+}
+
+textarea, pre, input, button, select {
+  background-color: #112240;
+  color: #ccd6f6;
+  border: 1px solid #233554;
+  border-radius: 5px;
+}
+
+button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #0f172a;
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #64ffda;
+  color: #0a192f;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+td, th {
+  background-color: #112240;
+  padding: 12px;
+  border: none;
+  color: #ccd6f6;
+  text-align: left;
+}
+
+tr {
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(100, 255, 218, 0.1);
+  transition: transform 0.2s ease;
+}
+
+tr:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 10px rgba(100, 255, 218, 0.2);
+}
+
+.tabs .tab {
+  border-radius: 8px 8px 0 0;
+  font-weight: 500;
+}
+
+
+.tab.active {
+  background-color: #0a192f;
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-bottom: none;
+  z-index: 2;
+}
+
+
+#table-container {
+  margin-top: 20px;
+}
+
+
+
+
+/* Style file input */
+input[type="file"] {
+  background-color: #112240;
+  color: #ccd6f6;
+  border: 1px solid #233554;
+  border-radius: 5px;
+  padding: 6px 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* Style label and select inline */
+label[for="delimiter"] {
+  display: inline-block;
+  margin-right: 8px;
+  font-weight: 500;
+  color: #64ffda;
+}
+
+#delimiter {
+  display: inline-block;
+  background-color: #112240;
+  color: #ccd6f6;
+  border: 1px solid #64ffda;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+
+
+.tabs {
+  display: flex;
+  margin-top: 20px;
+  border-bottom: 1px solid #64ffda;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #112240;
+  color: #8892b0;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: 8px 8px 0 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab:hover {
+  background-color: #1e2a47;
+  color: #64ffda;
+}
+
+
+.tab.active {
+  background-color: #0a192f;
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-bottom: none;
+  z-index: 2;
+}
+
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  background-color: #0a192f;
+  border: 1px solid #64ffda;
+  border-radius: 0 0 10px 10px;
+  margin-top: -1px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+
+
+.tabs {
+  display: flex;
+  margin-top: 20px;
+  border-bottom: 1px solid #64ffda;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  z-index: 0;
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #112240;
+  color: #8892b0;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #64ffda;
+  border-radius: 8px 8px 0 0;
+  margin-right: 2px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.tab.active {
+  background-color: #0a192f;
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-bottom: none;
+  z-index: 2;
+}
+
+
+
+
+/* FINAL FIX: Make active tab overlap the border cleanly */
+.tabs {
+  position: relative;
+  border-bottom: 1px solid #64ffda;
+}
+
+.tab {
+  border: 1px solid transparent;
+  border-bottom: 1px solid #64ffda;
+  z-index: 1;
+  position: relative;
+}
+
+.tab.active {
+  background-color: #0a192f;
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-bottom: 1px solid #0a192f !important;
+  z-index: 2;
 }
