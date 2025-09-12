@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON to Table</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .inline {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        #result-table-container table td,
+        #result-table-container table th {
+            white-space: nowrap;
+        }
+
+        small code {
+            background: #112240;
+            padding: 2px 4px;
+            border: 1px solid #233554;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JSON to Table Converter</h1>
+    <nav style="margin-bottom:16px;">
+        <a href="index.html"
+            style="color:#64ffda; text-decoration:none; border:1px solid #64ffda; padding:6px 12px; border-radius:6px;">⬅
+            Back to Excel ➜ JSON</a>
+    </nav>
+
+    <section>
+        <textarea id="json-input" placeholder='Paste JSON here (array or object containing arrays)'
+            style="width: 100%; min-height: 200px; padding: 12px; border: 1px solid #233554; border-radius: 6px; background: #112240; color: #e6fffa; font-family: 'Courier New', monospace; font-size: 14px; resize: vertical; box-sizing: border-box;"></textarea>
+        <div style="margin-top:8px;">
+            <label>Detected Arrays:</label>
+            <select id="array-path-select"></select>
+            <button id="analyze-btn">Analyze</button>
+            <button id="render-btn">Render Table</button>
+            <button id="clear-btn">Clear</button>
+        </div>
+        <div style="margin-top:8px;">
+            <label><input type="checkbox" id="flatten" checked> Flatten nested objects (dot notation)</label>
+            <label style="margin-left:12px;"><input type="checkbox" id="explode-arrays"> Explode first-level arrays of
+                primitives (repeat rows)</label>
+        </div>
+        <details style="margin-top:12px;">
+            <summary>Help / How it works</summary>
+            <p>Paste any JSON. The tool scans for arrays of objects. Choose which array to turn into a table. Headers
+                are the union of all object keys. Nested objects are optionally flattened using dot notation (e.g.
+                <code>address.city</code>). Nested arrays or objects that can't be flattened are stringified.</p>
+            <p>If you enable <b>Explode arrays</b>, arrays of primitives directly under each row will generate multiple
+                output rows (Cartesian style only for first such array encountered).</p>
+        </details>
+    </section>
+
+    <div id="result-table-container" style="margin-top:20px;"></div>
+    <div style="margin-top:16px;">
+        <button id="copy-csv-btn">Copy CSV</button>
+        <button id="download-xlsx-btn">Download XLSX</button>
+    </div>
+
+    <script src="libs/xlsx.full.min.js"></script>
+    <script src="json_to_table.js"></script>
+    <footer class="site-footer">
+        <p><strong>Privacy:</strong> All parsing and table generation run locally in your browser. No JSON or data is
+            uploaded or transmitted anywhere.</p>
+        <p>Made with <span aria-hidden="true">❤</span> by Becker</p>
+    </footer>
+</body>
+
+</html>

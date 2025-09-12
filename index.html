@@ -10,6 +10,11 @@
 
 <body>
   <h1>Excel to JSON Converter</h1>
+  <nav style="margin-bottom:16px;">
+    <a href="json_to_table.html"
+      style="color:#64ffda; text-decoration:none; border:1px solid #64ffda; padding:6px 12px; border-radius:6px;">Go to
+      JSON ➜ Table</a>
+  </nav>
   <div>
     <input type="file" id="upload" accept=".xlsx, .xls, .csv" />
   </div>
@@ -40,6 +45,12 @@
 
   <script src="libs/xlsx.full.min.js"></script>
   <script src="script.js"></script>
+
+  <footer class="site-footer">
+    <p><strong>Privacy:</strong> All conversions happen entirely in your browser. <br />No files, data, or JSON ever
+      leave your machine or get sent to any server.</p>
+    <p>Made with <span aria-hidden="true">❤</span> by Becker</p>
+  </footer>
 </body>
 
 </html>
